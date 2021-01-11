@@ -95,7 +95,9 @@ class Newscontroller extends Controller
       // 該当するデータを上書きして保存する
       $news->fill($news_form)->save();
       
+      #$history変数がhistoriesテーブルに対して操作できるように代入
         $history = new History;
+      #主テーブル(News)のidを従テーブル(History)のnews_idに代入している
         $history->news_id = $news->id;
         $history->edited_at = Carbon::now();
         $history->save();
