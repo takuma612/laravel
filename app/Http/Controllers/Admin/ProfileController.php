@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Profile;
 use App\Rename;
-use App\Carbon;
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
@@ -26,6 +26,7 @@ class ProfileController extends Controller
         
       // フォームから送信されてきた_tokenを削除する
         unset($form['_token']);
+        
         
         $profile->fill($form);
         $profile->save();
@@ -65,7 +66,7 @@ class ProfileController extends Controller
       
       unset($profile_form['_token']);
       unset($profile_form['remove']);
-
+      
       // 該当するデータを上書きして保存する
       $profile->fill($profile_form)->save();
       
@@ -86,4 +87,3 @@ class ProfileController extends Controller
       return redirect('admin/profile/');
   }  
 }
-
